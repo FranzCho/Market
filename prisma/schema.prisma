@@ -29,12 +29,18 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
+
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum UserType {
+  User
+  Admin
 }
 
 model User {
@@ -46,6 +52,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  userType UserType @default(User)
 } 
 
 model VerificationToken {
