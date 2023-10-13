@@ -24,7 +24,9 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div className="relative w-full">
-      {formatPrice && <span className="absolute text-neutral-700 top-5 left-2">$</span>}
+      {formatPrice && (
+        <span className="absolute text-neutral-700 top-5 left-2">$</span>
+      )}
       <input
         id={id}
         disabled={disabled}
@@ -36,6 +38,7 @@ const Input: React.FC<InputProps> = ({
           p-4
           pt-6
           font-light
+          border-2
           bg-white
           outline-none
           rounded-md
